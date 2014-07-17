@@ -1,0 +1,19 @@
+{
+    "name": "jonathanruiz/solution",
+    "description": "My solution to the proposed problem",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/console": "2.6.*@dev",
+        "sabre/xml" : "master-dev",
+        "doctrine/common": "2.4.*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*",
+        "mockery/mockery": "0.8.*"
+    },
+    "autoload": {
+        "psr-0": { "" : "src/" }
+    }
+}

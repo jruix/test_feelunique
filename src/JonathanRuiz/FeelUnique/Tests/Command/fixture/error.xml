@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <products>
+        <produt title="P1" price="5">
+            <category>C1</category>
+        </product>
+    </products>
+    <total>5</total>
+</order>

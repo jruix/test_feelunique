@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <products>
+        <product title="P1" price="5">
+            <category>C1</category>
+        </product>
+        <product title="P2" price="9">
+            <category>C2</category>
+        </product>
+        <product title="P3" price="5">
+            <category>C2</category>
+        </product>
+        <product title="P4" price="6">
+            <category>C2</category>
+        </product>
+        <product title="P5" price="8">
+            <category>C1</category>
+        </product>
+        <product title="P6" price="6">
+            <category>C3</category>
+        </product>
+        <product title="P7" price="15">
+            <category>C3</category>
+        </product>
+    </products>
+    <total>39</total>
+</order>

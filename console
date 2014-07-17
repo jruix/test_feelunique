@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use JonathanRuiz\FeelUnique\Command\ParseXmlCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('Jonathan Ruiz Application', '1.0.0');
+$application->add(new ParseXmlCommand);
+$application->run();
