@@ -22,6 +22,11 @@ class Product {
     private $category;
 
     /**
+     * @var bool
+     */
+    private $appliedOffer = false;
+
+    /**
      * @param $name
      * @param $price
      * @param Category $category
@@ -30,6 +35,7 @@ class Product {
         $this->name = $name;
         $this->price = $price;
         $this->category = $category;
+        $category->addProduct($this);
     }
 
     /**
@@ -72,5 +78,19 @@ class Product {
      */
     public function getPrice() {
         return $this->price;
+    }
+
+    /**
+     * Marks the product as it has an offer applied
+     */
+    public function flagAsAppliedOffer() {
+        $this->appliedOffer = true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasOfferApplied() {
+        return $this->appliedOffer;
     }
 }

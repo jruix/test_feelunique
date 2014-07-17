@@ -27,7 +27,16 @@ $ ./console jonathanruiz:feelunique:apply-discount XML_PATH --offer=3x2 --offer=
 * Symfony Console Component (to show the command)
 * Doctrine ArrayCollection to have a better array handling
 * XML parser
+* Behat for acceptance testing
+* PHPUnit for unit testing
+
+## Comments
+
+The tests provided have an error on the total price for the last acceptance test. I've decided to let it as it is (with a failing test), but It is actually incorrect (price should be 7.74, not 7.24)!
 
 ## Running tests
 
-```./vendor/bin/phpunit src```
+```
+$ ./vendor/bin/phpunit src
+$ ./vendor/bin/behat
+```

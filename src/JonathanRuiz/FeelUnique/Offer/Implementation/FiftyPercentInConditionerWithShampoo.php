@@ -27,30 +27,28 @@ class FiftyPercentInConditionerWithShampoo implements Offer {
      * @return Order
      */
     public function applyFor(Order $order) {
-        $categoryProducts = [];
+        $products = [];
+        $maximumToApplyOffer = 0;
 
         foreach ($order->getDistinctCategories() as $category) {
             switch ($category->getName()) {
                 case self::SHAMPOO_NAME:
-                    $categoryProducts[] = $category->getProductsOrderedByPrice();
+                    $maximumToApplyOffer = count($category->getProducts());
                     break;
                 case self::CONDITIONER_NAME:
-                    $categoryProducts[] = $category->getProductsOrderedByPrice();
+                    $products = $category->getProductsOrderedByPrice();
                     break;
             }
         }
 
-        if (count($categoryProducts) === 2) {
-            $minLength = (count($categoryProducts[0]) > count($categoryProducts[1])) ? count($categoryProducts[1]) : count($categoryProducts[0]);
+        $elementsToApply = (count($products) < $maximumToApplyOffer) ? count($products) : $maximumToApplyOffer;
 
-            foreach ($categoryProducts as $categoryProduct) {
-                /** @var Product $product */
-                foreach ($categoryProduct as $i => $product) {
-                    if ($i < $minLength) {
-                        $order->takeFromTotalPrice($product->getPrice() / 2);
-                    }
-                }
-            }
+        for ($i = 0; $i < $elementsToApply; $i++) {
+            /** @var Product $product */
+            $product = $products[$i];
+
+            $product->flagAsAppliedOffer();
+            $order->takeFromTotalPrice($product->getPrice() / 2);
         }
 
         return $order;

@@ -33,6 +33,7 @@ class GetThreePayTwo implements Offer {
                 $products = $category->getProductsOrderedByPrice();
 
                 for ($i = 0; $i < $productsToTakeFrom; $i++) {
+                    $products[$i]->flagAsAppliedOffer();
                     $order->takeFromTotalPrice($products[$i]->getPrice());
                 }
             }

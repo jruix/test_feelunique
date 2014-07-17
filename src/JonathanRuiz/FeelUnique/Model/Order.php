@@ -50,6 +50,7 @@ class Order implements \IteratorAggregate, \Countable {
      */
     public function add(Product $product) {
         $this->products->add($product);
+        $this->totalPrice += $product->getPrice();
     }
 
     /**
@@ -72,6 +73,37 @@ class Order implements \IteratorAggregate, \Countable {
         }
 
         return $categories;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getDeletedProducts() {
+        $products = [];
+
+        /** @var Product $product */
+        foreach ($this->products as $product) {
+            if ($product->hasOfferApplied()) {
+                $products[] = $product;
+            }
+        }
+
+        return $products;
+    }
+
+    /**
+     * @param $productName
+     * @return Product|null
+     */
+    public function getProductByName($productName) {
+        /** @var Product $product */
+        foreach ($this->products as $product) {
+            if ($product->getName() === $productName) {
+                return $product;
+            }
+        }
+
+        return null;
     }
 
     public function getIterator() {

@@ -55,13 +55,8 @@ class XmlParser implements ParserInterface {
                 $categoryName = $product['value'][0]['value'];
 
                 $category = $categoryManager->create($categoryName);
-                $product = new Product($name, $price, $category);
-                $category->addProduct($product);
-
-                $order->add($product);
+                $order->add(new Product($name, $price, $category));
             }
-
-            $order->setTotalPrice($data['value'][1]['value']);
 
             return $order;
         } catch (LibXMLException $e) {
